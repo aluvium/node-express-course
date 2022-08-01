@@ -22,6 +22,31 @@ app.get('/users/:id', function(req,res){
     })
 })
 
+//Unsafe demo POST
+app.post('/login', function(req,res){
+    //should be encrypted
+    const username=req.body.username;
+    const password=req.body.password;
+    // normaly from DB
+    const mockUsername="Katerina";
+    const mockPassword="strongPass-lol";
+    
+    // typically creating token here 
+    if (username===mockUsername && password===mockPassword){
+        res.json({
+	    success: true,
+	    message: 'password and username match!',
+	    token: 'encrypted token here'
+	})
+    } 
+    else {
+        res.json({
+            success: false,
+            message: 'Username and password don\'t match'
+        })
+    }
+})
+
 app.listen(8000,function() {
     console.log("Server is running..")
 })
