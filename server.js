@@ -55,6 +55,17 @@ app.post('/login', function(req,res){
 //STATIC
 app.use(express.static('static'))
 
+//ADMIN
+app.get('/admin',middleware.checkToken,function(req,res){
+
+	res.json({
+		success:true,
+		message:'admin authorized',
+		adminData: 'secure data from database'
+	})
+
+})
+
 app.listen(8000,function() {
     console.log("Server is running..")
 })
