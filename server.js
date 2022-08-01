@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+//for POST
 const bodyParser = require('body-parser');
 app.use(bodyParser.json())
  
@@ -10,6 +10,7 @@ const mockUserData=[
 {name:'sonya'}
 ]
 
+//GET
 app.get('/users', function(req,res){
     res.json({
         success: true,
@@ -50,6 +51,9 @@ app.post('/login', function(req,res){
         })
     }
 })
+
+//STATIC
+app.use(express.static('static'))
 
 app.listen(8000,function() {
     console.log("Server is running..")
